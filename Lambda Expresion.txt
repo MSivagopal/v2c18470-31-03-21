@@ -1,0 +1,49 @@
+package assign;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+class Student {
+	Integer Stu_ID;
+	Float Total_Marks;
+	String Stu_Name;
+
+	public Student(int stu_ID, String stu_Name, float total_Marks) {
+		super();
+		Stu_ID = stu_ID;
+		Total_Marks = total_Marks;
+		Stu_Name = stu_Name;
+	}
+
+}
+
+public class LamdaArrayList {
+
+	public static void main(String[] args) {
+		ArrayList<Student> list = new ArrayList<Student>();
+		list.add(new Student(15151, "Shyaam", 95.5f));
+		list.add(new Student(15159, "Supreeth", 93.80f));
+		list.add(new Student(15154, "Tharun", 97.22f));
+
+		// Lambda expression instead of Comparator
+		Collections.sort(list, (a, b) -> {
+			// return a.Stu_Name.compareTo(b.Stu_Name);
+			return a.Stu_ID.compareTo(b.Stu_ID);
+		});
+		System.out.println("Sorted by Lambda Expresion for ID");
+
+		for (Student s : list) {
+			System.out.println(s.Stu_ID + " " + s.Stu_Name + " " + s.Total_Marks);
+		}
+
+		Collections.sort(list, (a, b) -> {
+			return a.Total_Marks.compareTo(b.Total_Marks);
+		});
+		System.out.println("Sorted by Lambda Expresion for Marks");
+
+		for (Student s : list) {
+			System.out.println(s.Stu_ID + " " + s.Stu_Name + " " + s.Total_Marks);
+		}
+	}
+
+}
